@@ -10,7 +10,6 @@ import {
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { FloatingActions } from "@/components/site/FloatingActions";
-import { ChatBot } from "@/components/site/ChatBot";
 
 import appCss from "../styles.css?url";
 
@@ -121,7 +120,6 @@ function RootComponent() {
       </main>
       <Footer />
       <FloatingActions />
-      <ChatBot />
     </QueryClientProvider>
   );
 }

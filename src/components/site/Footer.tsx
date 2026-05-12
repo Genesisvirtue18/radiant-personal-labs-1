@@ -39,9 +39,13 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-primary/10 py-6 text-center text-xs text-muted-foreground tracking-widest uppercase">
-        © {new Date().getFullYear()} Apoorva Verma · Image Management
-      </div>
+     <div className="border-t border-primary/10 py-6 text-center text-xs text-muted-foreground tracking-widest uppercase">
+  © {new Date().getFullYear()} Apoorva Verma
+
+  <div className="mt-2 text-[10px] tracking-[0.3em] text-primary/70">
+    Developed by Genesis Virtue
+  </div>
+</div>
     </footer>
   );
 }
