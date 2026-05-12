@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Great+Vibes&family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-champagne: var(--champagne);
+  --color-charcoal: var(--charcoal);
+  --color-beige: var(--beige);
+
+  --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-script: "Great Vibes", "Pinyon Script", cursive;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Luxury palette — jet black + warm gold */
+  --background: oklch(0.13 0.005 60);          /* #0B0B0B */
+  --foreground: oklch(0.96 0.015 80);          /* warm soft white */
+  --card: oklch(0.17 0.005 60);                /* charcoal #1F1F1F */
+  --card-foreground: oklch(0.96 0.015 80);
+  --popover: oklch(0.17 0.005 60);
+  --popover-foreground: oklch(0.96 0.015 80);
+  --primary: oklch(0.74 0.09 80);              /* gold #C6A76E */
+  --primary-foreground: oklch(0.13 0.005 60);
+  --secondary: oklch(0.22 0.005 60);
+  --secondary-foreground: oklch(0.96 0.015 80);
+  --muted: oklch(0.2 0.005 60);
+  --muted-foreground: oklch(0.72 0.015 80);
+  --accent: oklch(0.88 0.04 85);               /* champagne */
+  --accent-foreground: oklch(0.13 0.005 60);
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.74 0.09 80 / 0.18);
+  --input: oklch(0.74 0.09 80 / 0.22);
+  --ring: oklch(0.74 0.09 80 / 0.5);
+
+  --gold: oklch(0.74 0.09 80);
+  --gold-soft: oklch(0.82 0.07 82);
+  --champagne: oklch(0.9 0.04 85);
+  --charcoal: oklch(0.17 0.005 60);
+  --beige: oklch(0.95 0.02 85);
+
+  --gradient-gold: linear-gradient(135deg, oklch(0.74 0.09 80) 0%, oklch(0.88 0.06 85) 50%, oklch(0.74 0.09 80) 100%);
+  --gradient-bg: radial-gradient(ellipse at top, oklch(0.2 0.01 60) 0%, oklch(0.1 0.005 60) 60%, oklch(0.08 0.005 60) 100%);
+  --gradient-overlay: linear-gradient(180deg, oklch(0.1 0.005 60 / 0.2) 0%, oklch(0.08 0.005 60 / 0.85) 100%);
+
+  --shadow-gold: 0 10px 40px -10px oklch(0.74 0.09 80 / 0.35);
+  --shadow-glass: 0 8px 32px 0 oklch(0 0 0 / 0.4);
+}
+
+.dark {
+  /* Same palette — design is permanently dark luxury */
+  --background: oklch(0.13 0.005 60);
+  --foreground: oklch(0.96 0.015 80);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--gradient-bg);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0.01em; }
+}
+
+@layer utilities {
+  .glass {
+    background: oklch(1 0 0 / 0.04);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid oklch(0.74 0.09 80 / 0.2);
+    box-shadow: var(--shadow-glass), inset 0 1px 0 0 oklch(1 0 0 / 0.05);
+  }
+  .glass-strong {
+    background: oklch(0.17 0.005 60 / 0.6);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid oklch(0.74 0.09 80 / 0.25);
+    box-shadow: var(--shadow-glass);
+  }
+  .glass-btn {
+    background: oklch(1 0 0 / 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid oklch(0.74 0.09 80 / 0.4);
+    color: var(--color-foreground);
+    transition: all 0.3s ease;
+  }
+  .glass-btn:hover {
+    background: oklch(0.74 0.09 80 / 0.15);
+    border-color: oklch(0.74 0.09 80 / 0.7);
+    box-shadow: var(--shadow-gold);
+    transform: translateY(-1px);
+  }
+  .glass-btn-gold {
+    background: var(--gradient-gold);
+    color: oklch(0.13 0.005 60);
+    border: 1px solid oklch(0.74 0.09 80 / 0.6);
+    backdrop-filter: blur(8px);
+    box-shadow: var(--shadow-gold);
+    transition: all 0.3s ease;
+    font-weight: 600;
+  }
+  .glass-btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 50px -10px oklch(0.74 0.09 80 / 0.55);
+    filter: brightness(1.08);
+  }
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .gold-underline {
+    position: relative;
+  }
+  .gold-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 100%; height: 1px;
+    background: var(--gradient-gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+  }
+  .gold-underline:hover::after { transform: scaleX(1); transform-origin: left; }
+  .hover-lift { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+  .hover-lift:hover { transform: translateY(-6px) scale(1.01); box-shadow: var(--shadow-gold); }
+  .animate-fade-in { animation: fadeIn 0.8s ease-out both; }
+  .animate-slide-up { animation: slideUp 0.9s ease-out both; }
+  .grain::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: radial-gradient(oklch(1 0 0 / 0.025) 1px, transparent 1px);
+    background-size: 3px 3px; opacity: 0.4;
+  }
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
